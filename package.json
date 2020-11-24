@@ -4,6 +4,7 @@
   "description": "API atender os requisitos do desafio-loja",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/vargasvini/south-system-desafio-node-loja/issues"
   },
-  "homepage": "https://github.com/vargasvini/south-system-desafio-node-loja#readme"
+  "homepage": "https://github.com/vargasvini/south-system-desafio-node-loja#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-validator": "^6.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.15",
+    "nodemon": "^2.0.6"
+  }
 }
