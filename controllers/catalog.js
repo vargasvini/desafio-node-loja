@@ -3,6 +3,22 @@ const { validationResult } = require('express-validator');
 const Product = require('../models/product');
 const User = require('../models/user');
 
+exports.getProduct = (req, res, next) => {
+  const prodId = req.params.productId;
+  Product.findById(prodId)
+    .then(product => {
+        res.status(200).json({
+        message: 'Fetched product successfully.',
+        product: product
+      });
+    })
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+};
+
 exports.getProducts = (req, res, next) => {
   const currentPage = req.query.page || 1;
   const perPage = 2;
@@ -30,7 +46,7 @@ exports.getProducts = (req, res, next) => {
     });
 };
 
-exports.createProduct = (req, res, next) => {
+exports.postAddProduct = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const error = new Error('Validation failed, entered data is incorrect.');
@@ -59,5 +75,60 @@ exports.createProduct = (req, res, next) => {
         err.statusCode = 500;
       }
       next(err);
+    });
+};
+
+exports.putEditProduct = (req, res, next) => {
+  const prodId = req.params.productId;
+  const updatedTitle = req.body.title;
+  const updatedPrice = req.body.price;
+  const updatedDesc = req.body.description;
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed, entered data is incorrect.');
+    error.statusCode = 422;
+    throw error;
+  }
+  Product.findById(prodId)
+    .then(product => {
+      product.title = updatedTitle;
+      product.price = updatedPrice;
+      product.description = updatedDesc;
+      return product.save();
+    })
+    .then(result => {
+      res.status(200).json({ 
+        message: 'Product updated!', 
+        product: result 
+      });
+    })
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+};
+
+exports.postDeleteProduct = (req, res, next) => {
+  const prodId = req.params.productId;
+  Product.findById(prodId)
+    .then(product => {
+      if (!product) {
+        return next(new Error('Product not found.'));
+      }
+      return Product.deleteOne({ _id: prodId });
+    })
+    .then(result => {
+      res.status(200).json({ 
+        message: 'Product deleted!', 
+        product: result
+      });
+    })
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     });
 };
