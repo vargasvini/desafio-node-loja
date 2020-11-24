@@ -19,7 +19,7 @@ router.get(
   catalogController.getProducts
 );
 
-// GET /catalog/products
+// GET /catalog/available-products
 router.get(
   '/available-products', 
   authMiddleware.isAuth,
@@ -39,7 +39,11 @@ router.post(
     body('price').isFloat(),
     body('description')
       .isLength({ min: 5, max: 400 })
+      .trim(),
+    body('available')
       .trim()
+      .not()
+      .isEmpty()
   ],
   catalogController.postAddProduct
 );
@@ -56,7 +60,11 @@ router.put(
     body('price').isFloat(),
     body('description')
       .isLength({ min: 5, max: 400 })
+      .trim(),
+    body('available')
       .trim()
+      .not()
+      .isEmpty()
   ],
   catalogController.putEditProduct
 );

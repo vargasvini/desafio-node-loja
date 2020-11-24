@@ -7,7 +7,10 @@ const authMiddleware = require('../middleware/is-auth');
 const router = express.Router();
 
 // POST /auth/login
-router.post('/login', authController.login);
+router.post(
+  '/login', 
+  authController.login
+);
 
 // PUT /auth/signup
 router.put(
