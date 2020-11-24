@@ -32,8 +32,8 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message, data: data });
 });
 
-const port = process.env.PORT || 9000;
-const connection_url = "mongodb+srv://admin:bILCKZQhrq2zpJfY@cluster0.f6tex.mongodb.net/desafiolojadb?retryWrites=true&w=majority";
+const port = process.env.PORT || 3000;
+const connection_url = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.f6tex.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`;
 
 mongoose
   .connect(connection_url, {

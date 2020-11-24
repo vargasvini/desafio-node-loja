@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -19,10 +19,13 @@
   "homepage": "https://github.com/vargasvini/south-system-desafio-node-loja#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.7.0",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^8.2.1",
     "mongoose": "^5.10.15",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "sinon": "^9.2.1"
   }
 }
