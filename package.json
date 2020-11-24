@@ -1,0 +1,19 @@
+{
+  "name": "south-system-desafio-node-loja",
+  "version": "1.0.0",
+  "description": "API atender os requisitos do desafio-loja",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vargasvini/south-system-desafio-node-loja.git"
+  },
+  "author": "Vinícius Vargas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vargasvini/south-system-desafio-node-loja/issues"
+  },
+  "homepage": "https://github.com/vargasvini/south-system-desafio-node-loja#readme"
+}
