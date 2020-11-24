@@ -7,7 +7,8 @@
     "node": "12.14.1"
   },
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "MONGO_USER=admin MONGO_PASSWORD=bILCKZQhrq2zpJfY MONGO_DATABASE=desafiolojadb node app.js",
+    "start:dev": "nodemon app.js",
     "test": "mocha"
   },
   "repository": {
