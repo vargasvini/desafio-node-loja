@@ -46,6 +46,33 @@ exports.getProducts = (req, res, next) => {
     });
 };
 
+exports.getAvailableProducts = (req, res, next) => {
+  const currentPage = req.query.page || 1;
+  const perPage = 2;
+  let totalItems;
+  Product.find({ available: true })
+    .countDocuments()
+    .then(count => {
+      totalItems = count;
+      return Product.find({ available: true })
+        .skip((currentPage - 1) * perPage)
+        .limit(perPage);
+    })
+    .then(products => {
+      res.status(200).json({
+        message: 'Fetched available products successfully.',
+        products: products,
+        totalItems: totalItems
+      });
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
 exports.postAddProduct = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -56,11 +83,13 @@ exports.postAddProduct = (req, res, next) => {
   const title = req.body.title;
   const price = req.body.price;
   const description = req.body.description;
+  const available = req.body.available;
 
   const product = new Product({
     title: title,
     price: price,
-    description: description
+    description: description,
+    available: available
   });
   product
     .save()
@@ -83,6 +112,7 @@ exports.putEditProduct = (req, res, next) => {
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
   const updatedDesc = req.body.description;
+  const updatedAvailable = req.body.available;
 
   const errors = validationResult(req);
 
@@ -96,6 +126,7 @@ exports.putEditProduct = (req, res, next) => {
       product.title = updatedTitle;
       product.price = updatedPrice;
       product.description = updatedDesc;
+      product.available = updatedAvailable;
       return product.save();
     })
     .then(result => {

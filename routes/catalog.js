@@ -19,6 +19,14 @@ router.get(
   catalogController.getProducts
 );
 
+// GET /catalog/products
+router.get(
+  '/available-products', 
+  authMiddleware.isAuth,
+  authMiddleware.isManager,
+  catalogController.getAvailableProducts
+);
+
 // POST /catalog/product
 router.post(
   '/product',
