@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const catalogRoutes = require('./routes/catalog');
 const authRoutes = require('./routes/auth');
+const compression = require('compression')
 
 const app = express();
 app.use(bodyParser.json());
+app.use(compression());
 
 app.get('/', (req, res)=>{
     res.status(200).send('Rood da API - Desafio Loja')

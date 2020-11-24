@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "API atender os requisitos do desafio-loja",
   "main": "app.js",
+  "engines": {
+    "node": "12.14.1"
+  },
   "scripts": {
     "start": "nodemon app.js",
     "test": "mocha"
@@ -20,6 +23,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "express-validator": "^6.7.0",
     "jsonwebtoken": "^8.5.1",
