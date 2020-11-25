@@ -12,15 +12,16 @@ Foram definidos três perfis de usuário, atribuindo diferentes permissões para
     - Consultar um produto específico do catálogo
     - Buscar todos os produtos existentes no catálogo
     - Buscar todos os produtos díponíveis
- --
+
  - **Usuário Autorizado/Autenticado**:
     - Adicionar novo produto
     - Editar produto existente
     - Deletar produto
     - Consultar um produto específico do catálogo
---
+
 - **Cliente (Acesso anônimo)**:
     - Consultar um produto específico do catálogo
+    
     
 Obs.: Para facilitar, foi criado um usuário para cada perfil:
 
@@ -47,7 +48,9 @@ MÉTODO | FUNCIONALIDADE | ENDEREÇO |
 |**GET**| Busca todos os produtodos **disponíveis** do catálogo | https://south-system-desafio-node-loja.herokuapp.com/catalog/available-products |
 
 ### Como consumir cada Endpoint
-No projeto existe um arquivo chamado "API -Postman Collection.json", que pode ser importado diretamente no [Postman](https://www.postman.com/).
+No projeto existe um arquivo chamado [API -Postman Collection.json](https://github.com/vargasvini/south-system-desafio-node-loja/blob/main/API%20-Postman%20Collection.json) com a descrição de cada endpoint desenvolvido e com exemplos de como consumi-los. O arquivo mencionado pode ser importado diretamente no [Postman](https://www.postman.com/).
+
+
 
 ### Instalação
 
