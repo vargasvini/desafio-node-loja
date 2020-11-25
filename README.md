@@ -28,6 +28,7 @@ USUÁRIO | SENHA | PERFIL |
 ------ | -------------- | -------- |
 |gerente_da_loja@gmail.com| pass123 | Gerente |
 |usuario_autorizado@gmail.com| pass123 | Usuário Autorizado |
+
 ![alt text](https://lucid.app/publicSegments/view/3ee2a52b-eae0-4a76-ab17-0a711229507c/image.png)
 
 ### Endpoints
