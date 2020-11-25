@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 
 const Product = require('../models/product');
-const User = require('../models/user');
 
 exports.getProduct = async (req, res, next) => {
   const prodId = req.params.productId;
