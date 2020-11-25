@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(compression());
 
 app.get('/', (req, res)=>{
-    res.status(200).send('Rood da API - Desafio Loja')
+    res.status(200).send('Root da API - Desafio Loja')
 });
 
 app.use((req, res, next) => {

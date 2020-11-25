@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "7dc78c04-fae6-47a1-bd55-7c22b6fcb390",
+		"name": "South System - Desafio Loja",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Adiciona Usuário",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"usuario_autorizado@gmail.com\",\r\n    \"password\":\"pass123\",\r\n    \"name\": \"Beltrano Autorizado\",\r\n    \"isManager\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/auth/signup",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				},
+				"description": "Criação de usuário"
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticar Usuário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"usuario_autorizado@gmail.com\",\r\n    \"password\":\"pass123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "Autenticação de usuário (necessário para gerar o token)"
+			},
+			"response": []
+		},
+		{
+			"name": "Busca todos os produtos do catálogo (disponíveis e indisponíveis)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzdWFyaW9fYXV0b3JpemFkb0BnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZmJkOWNlYzVhODk3MjAwMTczNGRmODAiLCJpc01hbmFnZXIiOmZhbHNlLCJpYXQiOjE2MDYyNjIwMTUsImV4cCI6MTYwNjI2NTYxNX0.eABsZkJmejC52XWzP4r69j_KWF-F2gtChw_ERGPtpN0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/catalog/products?page=1",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"catalog",
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Consulta todos os produtos disponíveis no catálogo do usuário (requer token)"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastra um novo produto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzdWFyaW9fYXV0b3JpemFkb0BnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZmJkOWNlYzVhODk3MjAwMTczNGRmODAiLCJpc01hbmFnZXIiOmZhbHNlLCJpYXQiOjE2MDYyNjIwMTUsImV4cCI6MTYwNjI2NTYxNX0.eABsZkJmejC52XWzP4r69j_KWF-F2gtChw_ERGPtpN0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Produto Numero 4\",\r\n    \"price\": 12.54,\r\n    \"description\": \"O quarto produto cadastrado em nossa loja!\",\r\n    \"available\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/catalog/product",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"catalog",
+						"product"
+					]
+				},
+				"description": "Cadastro de produto (requer token)"
+			},
+			"response": []
+		},
+		{
+			"name": "Edita um produto existente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcmdhc3J2aW5pY2l1c0BnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZmJjNmRmN2ExN2E0ZjE2Zjg0ZDkzZDQiLCJpc01hbmFnZXIiOnRydWUsImlhdCI6MTYwNjI0NTQ1NiwiZXhwIjoxNjA2MjQ5MDU2fQ.nVzB_G48ydKKgYrvjlO9CoMTiuBvhPF4OH3RMD8v5K4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Produto Numero 1\",\r\n    \"price\": 12.57,\r\n    \"description\": \"O primeiro produto cadastrado em nossa loja!\",\r\n    \"available\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/catalog/product/5fbcf13335bbce0a08529135",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"catalog",
+						"product",
+						"5fbcf13335bbce0a08529135"
+					]
+				},
+				"description": "Atualização cadadastral de produto (requer token)"
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta um produto específico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcmdhc3J2aW5pY2l1c0BnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZmJjNmRmN2ExN2E0ZjE2Zjg0ZDkzZDQiLCJpc01hbmFnZXIiOnRydWUsImlhdCI6MTYwNjI0NTQ1NiwiZXhwIjoxNjA2MjQ5MDU2fQ.nVzB_G48ydKKgYrvjlO9CoMTiuBvhPF4OH3RMD8v5K4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/catalog/delete-product/5fbcf3670421462c48a5175e",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"catalog",
+						"delete-product",
+						"5fbcf3670421462c48a5175e"
+					]
+				},
+				"description": "Método para remover produto do catálogo"
+			},
+			"response": []
+		},
+		{
+			"name": "Busca um único produto do catálogo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/catalog/product/5fbcf13335bbce0a08529135",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"catalog",
+						"product",
+						"5fbcf13335bbce0a08529135"
+					]
+				},
+				"description": "Busca apenas um produto da lista (acessível para clientes anônimos)"
+			},
+			"response": []
+		},
+		{
+			"name": "Busca todos os produtodos disponíveis do catálogo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhcmdhc3J2aW5pY2l1c0BnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZmJjNmRmN2ExN2E0ZjE2Zjg0ZDkzZDQiLCJpc01hbmFnZXIiOnRydWUsImlhdCI6MTYwNjI0NTQ1NiwiZXhwIjoxNjA2MjQ5MDU2fQ.nVzB_G48ydKKgYrvjlO9CoMTiuBvhPF4OH3RMD8v5K4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://south-system-desafio-node-loja.herokuapp.com/catalog/available-products?page=1",
+					"protocol": "https",
+					"host": [
+						"south-system-desafio-node-loja",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"catalog",
+						"available-products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Lista apenas os produtos disponíveis no catálogo (requer token/gerente)"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

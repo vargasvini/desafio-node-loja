@@ -139,15 +139,18 @@ exports.putEditProduct = async (req, res, next) => {
 
 exports.postDeleteProduct = async (req, res, next) => {
   const prodId = req.params.productId;
+  
   try {
     const product = await Product.findById(prodId);
     if (!product) {
-      return next(new Error('Product not found.'));
+      const error = new Error('Could not find the product.');
+      error.statusCode = 404;
+      throw error;
     }
-    await Product.findByIdAndRemove({ prodId });
+    await Product.findByIdAndRemove(product._id);
     res.status(200).json({ 
       message: 'Product deleted!', 
-      product: result
+      product: product
     });
   } catch (err) {
       const error = new Error(err);
