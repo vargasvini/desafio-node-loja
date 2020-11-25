@@ -40,12 +40,12 @@ MÉTODO | FUNCIONALIDADE | ENDEREÇO |
 ------ | -------------- | -------- |
 |**PUT**| Adicionar Usuário | https://south-system-desafio-node-loja.herokuapp.com/auth/signup |
 |**POST**| Autenticar Usuário | https://south-system-desafio-node-loja.herokuapp.com/auth/login |
-|**GET**| Busca todos os produtos do catálogo (disponíveis e indisponíveis) | https://south-system-desafio-node-loja.herokuapp.com/catalog/products |
+|**GET**| Busca todos os produtos do catálogo (disponíveis e indisponíveis) [Contém paginação] | https://south-system-desafio-node-loja.herokuapp.com/catalog/products?page=1 |
 |**POST**| Cadastra um novo produto | https://south-system-desafio-node-loja.herokuapp.com/catalog/product |
 |**PUT**| Edita um produto existente | https://south-system-desafio-node-loja.herokuapp.com//catalog/product/:productId |
 |**POST**| Deleta um produto específico | https://south-system-desafio-node-loja.herokuapp.com/catalog/delete-product/:productId |
 |**GET**| Busca um único produto do catálogo | https://south-system-desafio-node-loja.herokuapp.com/catalog/product/:productId |
-|**GET**| Busca todos os produtodos **disponíveis** do catálogo | https://south-system-desafio-node-loja.herokuapp.com/catalog/available-products |
+|**GET**| Busca todos os produtodos **disponíveis** do catálogo [Contém paginação] | https://south-system-desafio-node-loja.herokuapp.com/catalog/available-products?page=1 |
 
 ### Como consumir cada Endpoint
 No projeto existe um arquivo chamado [API -Postman Collection.json](https://github.com/vargasvini/south-system-desafio-node-loja/blob/main/API%20-Postman%20Collection.json) com a descrição de cada endpoint desenvolvido e com exemplos de como consumi-los. O arquivo mencionado pode ser importado diretamente no [Postman](https://www.postman.com/).
@@ -55,7 +55,7 @@ No projeto existe um arquivo chamado [API -Postman Collection.json](https://gith
 ### Instalação
 
 Abaixo estão listados os requisitos necessários para instalar o projeto e suas dependências:
- - Ter o Node.js instalado: https://nodejs.org/en/download/
+ - Ter o [Node.js](https://nodejs.org/en/download/) instalado: 
  
 Install the dependencies and devDependencies and start the server.
 
