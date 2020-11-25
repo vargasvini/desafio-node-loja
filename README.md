@@ -55,9 +55,9 @@ No projeto existe um arquivo chamado [API -Postman Collection.json](https://gith
 ### Instalação
 
 Abaixo estão listados os requisitos necessários para instalar o projeto e suas dependências:
- - Ter o [Node.js](https://nodejs.org/en/download/) instalado: 
+ - Ter o [Node.js](https://nodejs.org/en/download/) instalado
  
-Install the dependencies and devDependencies and start the server.
+Instalar as dependências:
 
 ```sh
 $ npm install
