@@ -16,8 +16,9 @@ exports.getProduct = async (req, res, next) => {
       product: product
     });
   } catch (err) {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
       return next(error);
   }
 };
@@ -130,9 +131,10 @@ exports.putEditProduct = async (req, res, next) => {
     });
 
   } catch (err) {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      return next(err);
   }
 };
 
@@ -152,8 +154,9 @@ exports.postDeleteProduct = async (req, res, next) => {
       product: product
     });
   } catch (err) {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      return next(err);
   }
 };

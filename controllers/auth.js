@@ -38,8 +38,7 @@ exports.login = async (req, res, next) => {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
-    next(err);
-    return err;
+    return next(err);
   }
 };
 
@@ -71,8 +70,6 @@ exports.signup = async (req, res, next) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
-    
-    return err;
+    return next(err);
   }
 };
